@@ -15,7 +15,6 @@ class MarcaController extends Controller
         ]);
     }
     public function inserir(){
-        //Marca::created()->toArray();
         return view('Marca.inserir');
     }
     public function inserirSubmit(Request $request){
@@ -31,7 +30,7 @@ class MarcaController extends Controller
         $marca->situacao = $request->input('situacao');
         $marca->save();
 
-        return redirect()->route('marca.index')->with('success', 'Marca inserida com sucesso');
+        return redirect()->route('marca.index')->with('success', 'Marca inserida com sucesso.');
     }
 
 
@@ -43,7 +42,7 @@ class MarcaController extends Controller
 
         $marca->delete();
 
-        return redirect()->route('marca.index')->with('success', 'Marca excluida com sucesso');
+        return redirect()->route('marca.index')->with('success', 'Marca excluida com sucesso.');
     }
     public function alterar($id){
         $marca = Marca::find($id);
@@ -68,6 +67,6 @@ class MarcaController extends Controller
         $marca->situacao = $request->input('situacao');
         $marca->save();
 
-        return redirect()->route('marca.index')->with('success', 'Marca editada com sucesso');
+        return redirect()->route('marca.index')->with('success', 'Marca editada com sucesso.');
     }
 }

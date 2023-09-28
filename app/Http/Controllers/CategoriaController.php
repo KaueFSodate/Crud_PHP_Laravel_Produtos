@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Categoria;
+use App\Models\Marca;
+use DemeterChain\C;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
@@ -17,11 +19,51 @@ class CategoriaController extends Controller
     public function inserir(){
         return view('Categoria.inserir');
     }
+    public function inserirSubmit(Request $request){
+        $request->validate([
+            'nome' => 'required',
+            'situacao' => 'required',
+        ]);
 
-    public function excluir(){
-        return view('Categoria.excluir');
+        $categoria = new Categoria();
+        $categoria->nome = $request->input('nome');
+        $categoria->situacao = $request->input('situacao');
+        $categoria->save();
+
+        return redirect()->route('categoria.index')->with('success', 'Categoria inserida com sucesso.');
     }
-    public function alterar(){
-        return view('Categoria.alterar');
+
+    public function excluir($id){
+        $categoria = Categoria::find($id);
+        if (!$categoria) {
+            return redirect()->route('marca.index')->with('error', 'Categoria não encontrada.');
+        }
+
+        $categoria->delete();
+
+        return redirect()->route('categoria.index')->with('success', 'Categoria excluida com sucesso.');
+    }
+    public function alterar($id){
+        $categoria = Categoria::find($id);
+
+        if (!$categoria) {
+            return redirect()->route('marca.index')->with('error', 'Categoria não encontrada.');
+        }
+
+        return view('Categoria.alterar', compact('categoria'));
+    }
+
+    public function alterarCategoria(Request $request, $id){
+        $request->validate([
+            'nome' => 'required',
+            'situacao' => 'required',
+        ]);
+        $categoria = Categoria::find($id);
+
+        $categoria->nome = $request->input('nome');
+        $categoria->situacao = $request->input('situacao');
+        $categoria->save();
+
+        return redirect()->route('categoria.index')->with('success', 'Categoria editada com sucesso.');
     }
 }

@@ -15,13 +15,59 @@ class MarcaController extends Controller
         ]);
     }
     public function inserir(){
+        //Marca::created()->toArray();
         return view('Marca.inserir');
     }
+    public function inserirSubmit(Request $request){
+        $request->validate([
+            'nome' => 'required',
+            'nome_fantasia' => 'required',
+            'situacao' => 'required',
+        ]);
 
-    public function excluir(){
-        return view('Marca.excluir');
+        $marca = new Marca();
+        $marca->nome = $request->input('nome');
+        $marca->nome_fantasia = $request->input('nome_fantasia');
+        $marca->situacao = $request->input('situacao');
+        $marca->save();
+
+        return redirect()->route('marca.index')->with('success', 'Marca inserida com sucesso');
     }
-    public function alterar(){
-        return view('Marca.alterar');
+
+
+    public function excluir(Request $request, $id){
+        $marca = Marca::find($id);
+        if (!$marca) {
+            return redirect()->route('marca.index')->with('error', 'Marca não encontrada.');
+        }
+
+        $marca->delete();
+
+        return redirect()->route('marca.index')->with('success', 'Marca excluida com sucesso');
+    }
+    public function alterar($id){
+        $marca = Marca::find($id);
+
+        if (!$marca) {
+            return redirect()->route('marca.index')->with('error', 'Marca não encontrada.');
+        }
+
+        return view('Marca.alterar', compact('marca'));
+    }
+
+    public function alterarMarca(Request $request, $id){
+        $request->validate([
+            'nome' => 'required',
+            'nome_fantasia' => 'required',
+            'situacao' => 'required',
+        ]);
+        $marca = Marca::find($id);
+
+        $marca->nome = $request->input('nome');
+        $marca->nome_fantasia = $request->input('nome_fantasia');
+        $marca->situacao = $request->input('situacao');
+        $marca->save();
+
+        return redirect()->route('marca.index')->with('success', 'Marca editada com sucesso');
     }
 }

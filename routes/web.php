@@ -20,10 +20,12 @@ Route::get('/api', function () {
 });
 
 Route::group(['prefix' => 'marca'], function () {
-    Route::get('/', [MarcaController::class, 'index']);
+    Route::get('/', [MarcaController::class, 'index'])->name('marca.index');;
     Route::get('/inserir', [MarcaController::class, 'inserir']);
-    Route::get('/alterar', [MarcaController::class, 'alterar']);
-    Route::get('/excluir', [MarcaController::class, 'excluir']);
+    Route::post('/inserir', [MarcaController::class, 'inserirSubmit'])->name('marca.inserir.submit');
+    Route::get('/alterar/{id}', [MarcaController::class, 'alterar']);
+    Route::put('/alterar/{id}', [MarcaController::class, 'alterarMarca'])->name('marca.alterar');
+    Route::delete('/excluir/{id}', [MarcaController::class, 'excluir'])->name('marca.excluir');;
 });
 
 Route::group(['prefix' => 'categoria'], function () {

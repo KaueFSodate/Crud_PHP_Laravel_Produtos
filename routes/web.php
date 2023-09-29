@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\CorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +36,13 @@ Route::group(['prefix' => 'categoria'], function () {
     Route::get('/alterar/{id}', [CategoriaController::class, 'alterar']);
     Route::put('/alterar/{id}', [CategoriaController::class, 'alterarCategoria'])->name('categoria.alterar');
     Route::delete('/excluir/{id}', [CategoriaController::class, 'excluir'])->name('categoria.excluir');
+});
+
+Route::group(['prefix' => 'cor'], function () {
+    Route::get('/', [CorController::class, 'index'])->name('cor.index');;
+    Route::get('/inserir', [CorController::class, 'inserir']);
+    Route::post('/inserir', [CorController::class, 'inserirSubmit'])->name('cor.inserir.submit');
+    Route::get('/alterar/{id}', [CorController::class, 'alterar']);
+    Route::put('/alterar/{id}', [CorController::class, 'alterarCor'])->name('cor.alterar');
+    Route::delete('/excluir/{id}', [CorController::class, 'excluir'])->name('cor.excluir');
 });

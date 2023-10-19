@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Categoria;
 use App\Models\Cor;
 use Illuminate\Http\Request;
 
@@ -35,18 +33,18 @@ class CorController extends Controller
     public function excluir($id){
         $cor = Cor::find($id);
         if (!$cor) {
-            return redirect()->route('marca.index')->with('error', 'Cor não encontrada.');
+            return redirect()->route('cor.index')->with('error', 'Cor não encontrada.');
         }
 
         $cor->delete();
 
-        return redirect()->route('categoria.index')->with('success', 'Cor excluida com sucesso.');
+        return redirect()->route('cor.index')->with('success', 'Cor excluida com sucesso.');
     }
     public function alterar($id){
         $cor = Cor::find($id);
 
         if (!$cor) {
-            return redirect()->route('marca.index')->with('error', 'Cor não encontrada.');
+            return redirect()->route('cor.index')->with('error', 'Cor não encontrada.');
         }
 
         return view('Cor.alterar', compact('cor'));

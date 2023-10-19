@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Marca;
+use Illuminate\Http\Request;
 
 class MarcaController extends Controller
 {
@@ -51,7 +50,7 @@ class MarcaController extends Controller
             return redirect()->route('marca.index')->with('error', 'Marca não encontrada.');
         }
 
-        return view('Marca.alterar', compact('marca'));
+        return view('Marca.inserir', compact('marca'));
     }
 
     public function alterarMarca(Request $request, $id){

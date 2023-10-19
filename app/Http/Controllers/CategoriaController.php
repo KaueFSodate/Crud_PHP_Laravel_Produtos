@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Categoria;
-use App\Models\Marca;
-use DemeterChain\C;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
@@ -36,7 +33,7 @@ class CategoriaController extends Controller
     public function excluir($id){
         $categoria = Categoria::find($id);
         if (!$categoria) {
-            return redirect()->route('marca.index')->with('error', 'Categoria não encontrada.');
+            return redirect()->route('categoria.index')->with('error', 'Categoria não encontrada.');
         }
 
         $categoria->delete();
@@ -47,7 +44,7 @@ class CategoriaController extends Controller
         $categoria = Categoria::find($id);
 
         if (!$categoria) {
-            return redirect()->route('marca.index')->with('error', 'Categoria não encontrada.');
+            return redirect()->route('categoria.index')->with('error', 'Categoria não encontrada.');
         }
 
         return view('Categoria.alterar', compact('categoria'));

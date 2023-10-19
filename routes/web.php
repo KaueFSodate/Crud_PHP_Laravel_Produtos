@@ -25,7 +25,7 @@ Route::group(['prefix' => 'marca'], function () {
     Route::get('/inserir', [MarcaController::class, 'inserir']);
     Route::post('/inserir', [MarcaController::class, 'inserirSubmit'])->name('marca.inserir.submit');
     Route::get('/alterar/{id}', [MarcaController::class, 'alterar']);
-    Route::put('/alterar/{id}', [MarcaController::class, 'alterarMarca'])->name('marca.alterar');
+    Route::post('/alterar/{id}', [MarcaController::class, 'alterarMarca'])->name('marca.alterar');
     Route::delete('/excluir/{id}', [MarcaController::class, 'excluir'])->name('marca.excluir');;
 });
 

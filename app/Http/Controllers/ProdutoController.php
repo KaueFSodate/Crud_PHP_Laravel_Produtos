@@ -41,7 +41,7 @@ class ProdutoController extends Controller
         $produto->preco = $request->input('preco');
         $produto->quantidade = $request->input('quantidade');
         $produto->cor = $request->input('cor');
-        $produto->descricao = $request->input('descricao');
+        $produto->descricao = html_entity_decode(strip_tags($request->input('descricao')));
         $produto->save();
 
         return redirect()->route('produto.index')->with('success', 'Produto inserido com sucesso.');
@@ -89,7 +89,7 @@ class ProdutoController extends Controller
         $produto->preco = $request->input('preco');
         $produto->quantidade = $request->input('quantidade');
         $produto->cor = $request->input('cor');
-        $produto->descricao = $request->input('descricao');
+        $produto->descricao = html_entity_decode(strip_tags($request->input('descricao')));
         $produto->save();
 
         return redirect()->route('produto.index')->with('success', 'Produto editado com sucesso.');

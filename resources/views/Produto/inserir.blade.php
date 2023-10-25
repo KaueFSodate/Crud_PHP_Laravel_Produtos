@@ -59,9 +59,8 @@
                 <input type="text" name="quantidade" value="{{$input_quantidade}}" style="margin-bottom: 10px"
                        placeholder="Nome">
                 <label>Descrição do Produto</label>
-                <input type="text" name="descricao" value="{{$input_descricao}}" style="margin-bottom: 10px" placeholder="Nome">
 
-                <textarea id="meuEditor"></textarea>
+                <textarea id="meuEditor" name="descricao">{{$input_descricao}}</textarea>
 
                 <script>
                     tinymce.init({

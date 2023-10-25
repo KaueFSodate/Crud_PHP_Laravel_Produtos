@@ -19,6 +19,8 @@
 
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+
 
 </head>
 
@@ -55,6 +57,13 @@
             <div class="sidebar-heading">
                 Produtos
             </div>
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="/produto">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Produtos</span></a>
+            </li>
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">

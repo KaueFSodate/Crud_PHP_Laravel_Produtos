@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CorController;
+use App\Http\Controllers\ProdutoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,15 @@ Route::group(['prefix' => 'categoria'], function () {
     Route::get('/alterar/{id}', [CategoriaController::class, 'alterar']);
     Route::put('/alterar/{id}', [CategoriaController::class, 'alterarCategoria'])->name('categoria.alterar');
     Route::delete('/excluir/{id}', [CategoriaController::class, 'excluir'])->name('categoria.excluir');
+});
+
+Route::group(['prefix' => 'produto'], function () {
+    Route::get('/', [ProdutoController::class, 'index'])->name('produto.index');;
+    Route::get('/inserir', [ProdutoController::class, 'inserir']);
+    Route::post('/inserir', [ProdutoController::class, 'inserirSubmit'])->name('produto.inserir.submit');
+    Route::get('/alterar/{id}', [ProdutoController::class, 'alterar']);
+    Route::post('/alterar/{id}', [ProdutoController::class, 'alterarProduto'])->name('produto.alterar');
+    Route::delete('/excluir/{id}', [ProdutoController::class, 'excluir'])->name('produto.excluir');
 });
 
 Route::group(['prefix' => 'cor'], function () {

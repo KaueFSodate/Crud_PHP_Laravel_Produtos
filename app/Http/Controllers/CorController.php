@@ -17,10 +17,6 @@ class CorController extends Controller
         return view('Cor.inserir');
     }
     public function inserirSubmit(Request $request){
-        $request->validate([
-            'cor' => 'required',
-            'situacao' => 'required',
-        ]);
 
         $cor = new Cor();
         $cor->cor = $request->input('cor');

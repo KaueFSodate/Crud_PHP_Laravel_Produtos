@@ -6,7 +6,7 @@
         <div class="card-body">
             <form action="{{ route('marca.alterar', ['id' => $marca['id']]) }}" method="POST" style="display: flex; flex-direction: column">
             @csrf
-                @method('PUT')
+                @method('POST')
 
                 <label>Nome da Marca</label>
                 <input type="text" name="nome" style="margin-bottom: 10px" placeholder="Nome" value="{{ $marca['nome'] }}">

@@ -3,7 +3,7 @@
 @section('contents')
     @php
         $titulo = "Inclusão de uma nova Marca";
-        $endpoint = "/marca/inserir";
+        $endpoint = "/admin/marca/inserir";
         $input_name = "";
         $input_fantasia = "";
         $input_id = "";
@@ -11,7 +11,7 @@
         if(isset($marca)){
             $input_id = $marca['id'];
             $titulo = "Alteração da Marca";
-            $endpoint = "/marca/alterar/$input_id";
+            $endpoint = "/admin/marca/alterar/$input_id";
             $input_name = $marca['nome'];
             $input_fantasia = $marca['nome_fantasia'];
             $method = "put";

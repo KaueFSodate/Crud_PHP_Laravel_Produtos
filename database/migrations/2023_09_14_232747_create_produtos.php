@@ -18,8 +18,10 @@ return new class extends Migration
             $table->foreignId("marca")->constrained("marca");
             $table->string("preco");
             $table->float("quantidade");
+            $table->float("quantidade_solic");
             $table->foreignId("cor")->constrained("cors");
             $table->string("descricao");
+            $table->string("url_img");
             $table->timestamps();
         });
     }

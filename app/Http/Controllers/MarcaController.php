@@ -17,11 +17,6 @@ class MarcaController extends Controller
         return view('Marca.inserir');
     }
     public function inserirSubmit(Request $request){
-        $request->validate([
-            'nome' => 'required',
-            'nome_fantasia' => 'required',
-            'situacao' => 'required',
-        ]);
 
         $marca = new Marca();
         $marca->nome = $request->input('nome');
@@ -50,7 +45,7 @@ class MarcaController extends Controller
             return redirect()->route('marca.index')->with('error', 'Marca não encontrada.');
         }
 
-        return view('Marca.inserir', compact('marca'));
+        return view('Marca.alterar', compact('marca'));
     }
 
     public function alterarMarca(Request $request, $id){

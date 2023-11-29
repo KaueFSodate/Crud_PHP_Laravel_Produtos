@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\ComprasUsuario;
 use App\Models\Cor;
 use App\Models\Marca;
 use App\Models\Produto;
@@ -20,6 +21,13 @@ class ProdutoController extends Controller
             'listaMarcas' => $marcas,
             'listaCores' => $cores,
             'listaCategorias' => $categorias,
+        ]);
+    }
+
+    public function indexComprasUsuarios(){
+        $compras = ComprasUsuario::all();
+        return view('Produto.compras', [
+            'compras' => $compras
         ]);
     }
     public function inserir(){
@@ -40,7 +48,9 @@ class ProdutoController extends Controller
         $produto->marca = $request->input('marca');
         $produto->preco = $request->input('preco');
         $produto->quantidade = $request->input('quantidade');
+        $produto->quantidade_solic = 0;
         $produto->cor = $request->input('cor');
+        $produto->url_img = $request->input('url_img');
         $produto->descricao = html_entity_decode(strip_tags($request->input('descricao')));
         $produto->save();
 
@@ -59,16 +69,18 @@ class ProdutoController extends Controller
     }
     public function alterar($id){
         $produto = Produto::find($id);
-        $cor = Cor::find($produto['cor']);
-        $categoria = Cor::find($produto['categoria']);
-        $marca = Cor::find($produto['marca']);
         if (!$produto) {
-            return redirect()->route('produto.index')->with('error', 'Produto não encontrada.');
+            return redirect()->route('produto.index')->with('error', 'Produto não encontrado.');
         }
+
+        $cor = Cor::find($produto['cor']);
+        $categoria = Categoria::find($produto['categoria']);
+        $marca = Marca::find($produto['marca']);
 
         $marcas = Marca::all()->toArray();
         $cores = Cor::all()->toArray();
         $categorias = Categoria::all()->toArray();
+
         return view('Produto.inserir', [
             'produto' => $produto,
             'listaMarcas' => $marcas,
@@ -89,6 +101,7 @@ class ProdutoController extends Controller
         $produto->preco = $request->input('preco');
         $produto->quantidade = $request->input('quantidade');
         $produto->cor = $request->input('cor');
+        $produto->url_img = $request->input('url_img');
         $produto->descricao = html_entity_decode(strip_tags($request->input('descricao')));
         $produto->save();
 

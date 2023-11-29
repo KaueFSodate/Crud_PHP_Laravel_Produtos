@@ -4,7 +4,7 @@
     <h1 class="h3 mb-4 text-gray-800">Marca de Produtos</h1>
     <div class="card">
         <div class="card-body">
-            <a href="/marca/inserir" class="btn btn-success" style="margin-bottom: 10px">Novo</a>
+            <a href="/admin/marca/inserir" class="btn btn-success" style="margin-bottom: 10px">Novo</a>
             <table class="table table-bordered dataTable">
                 <thead>
                 <td>ID</td>

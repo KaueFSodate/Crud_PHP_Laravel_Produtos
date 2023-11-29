@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('usuarios', function (Blueprint $table) {
-            $table->id("email");
-            $table->string("nome");
-            $table->integer("nivel");
-            $table->string("senha");
-            $table->boolean("validou_email");
-            $table->string("chave");
+        Schema::create('carrinhos', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId("usuario_id")->constrained("usuarios");
+            $table->string("meio_pagamento");
+            $table->float("preco_total");
+            $table->float("quantidade_total");
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('usuarios');
+        Schema::dropIfExists('carrinho');
     }
 };

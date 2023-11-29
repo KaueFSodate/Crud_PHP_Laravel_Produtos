@@ -11,7 +11,7 @@
 
     <div class="card">
         <div class="card-body">
-            <a href="/produto/inserir" class="btn btn-success" style="margin-bottom: 10px">Novo</a>
+            <a href="/admin/produto/inserir" class="btn btn-success" style="margin-bottom: 10px">Novo</a>
             <table class="table table-bordered dataTable">
                 <thead>
                 <td>ID</td>

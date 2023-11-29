@@ -5,7 +5,7 @@
 
     <div class="card">
         <div class="card-body">
-            <a href="/categoria/inserir" class="btn btn-success" style="margin-bottom: 10px">Novo</a>
+            <a href="/admin/categoria/inserir" class="btn btn-success" style="margin-bottom: 10px">Novo</a>
             <table class="table table-bordered dataTable">
                 <thead>
                 <td>ID</td>
@@ -18,7 +18,7 @@
                     <tr>
                         <td>{{$item['id']}}</td>
                         <td>{{$item['nome']}}</td>
-                        <td>{{$item['situacao']}}</td>
+                        <td>{{$item['situacao'] == 1 ? 'ATIVO' : 'INATIVO'}}</td>
                         <td>
                             <div style="display: flex; width: 100%">
                                 <form style="margin-left: 20px"

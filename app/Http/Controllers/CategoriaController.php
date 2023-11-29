@@ -17,14 +17,10 @@ class CategoriaController extends Controller
         return view('Categoria.inserir');
     }
     public function inserirSubmit(Request $request){
-        $request->validate([
-            'nome' => 'required',
-            'situacao' => 'required',
-        ]);
-
         $categoria = new Categoria();
         $categoria->nome = $request->input('nome');
         $categoria->situacao = $request->input('situacao');
+        $categoria->ativo = $request->input('situacao');
         $categoria->save();
 
         return redirect()->route('categoria.index')->with('success', 'Categoria inserida com sucesso.');

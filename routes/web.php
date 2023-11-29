@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CorController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\CarrinhoController;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,17 @@ Route::get('/api', function () {
 });
 
 Route::group(['prefix' => 'admin'], function(){
+
+    Route::group(['prefix' => 'usuario'], function () {
+        Route::get('/', [UsuarioController::class, 'index'])->name('usuario.index');;
+        Route::get('/inserir', [UsuarioController::class, 'inserir']);
+        Route::post('/inserir', [UsuarioController::class, 'inserirSubmit'])->name('usuario.inserir.submit');
+        Route::get('/alterar/{id}', [UsuarioController::class, 'alterar']);
+        Route::post('/alterar/{id}', [UsuarioController::class, 'alterarUsuario'])->name('usuario.alterar');
+        Route::delete('/excluir/{id}', [UsuarioController::class, 'excluir'])->name('usuario.excluir');;
+    });
+
+
     Route::group(['prefix' => 'marca'], function () {
         Route::get('/', [MarcaController::class, 'index'])->name('marca.index');;
         Route::get('/inserir', [MarcaController::class, 'inserir']);

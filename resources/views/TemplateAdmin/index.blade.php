@@ -64,6 +64,13 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
+                <a class="nav-link" href="/admin/usuario">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Usuários</span></a>
+            </li>
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
                 <a class="nav-link" href="/admin/produto">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Produtos</span></a>
